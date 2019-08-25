@@ -15,7 +15,8 @@ transcript_element.appendChild(p);
 recognition.addEventListener("result", (e) => {
     const transcript = Array.from(e.results)
     .map(result => result[0])
-    .map(result => result.transcript);
+    .map(result => result.transcript)
+    .join(""); // JOINS IT TOGETHER
 
     p.textContent = transcript;
     if(e.results[0].isFinal) {
@@ -23,10 +24,21 @@ recognition.addEventListener("result", (e) => {
         p.textContent = transcript;
         transcript_element.appendChild(p);
         p.textContent = "";
+
+         if(transcript.includes("weather")) {
+            let command = document.createElement("p");
+            command.classList.add("command");
+            command.textContent = "Getting the weather...";
+
+            transcript_element.appendChild(command);
+        }
     }
 });
 
-// recognition.addEventListener("end", recognition.start);
+recognition.addEventListener("end", () => {
+    endBtn.disabled = true;
+    talkBtn.disabled = false;
+});
 
 talkBtn.addEventListener("click", () => {
     endBtn.disabled = false;

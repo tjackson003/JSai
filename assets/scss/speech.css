@@ -32,4 +32,8 @@ body {
 .wrapper #transcript p {
   color: yellow;
 }
+
+.wrapper #transcript .command {
+  color: gold;
+}
 /*# sourceMappingURL=speech.css.map */
