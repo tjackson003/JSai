@@ -4,6 +4,9 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
 const recognition = new SpeechRecognition();
 recognition.interimResults = true;
 const transcript_element = document.getElementById("transcript");
+// BUTTONS
+const talkBtn = document.getElementById("start");
+const endBtn = document.getElementById("end");
 
 let p = document.createElement("p");
 transcript_element.appendChild(p);
@@ -23,6 +26,7 @@ recognition.addEventListener("result", (e) => {
     }
 });
 
-recognition.addEventListener("end", recognition.start);
+// recognition.addEventListener("end", recognition.start);
 
-recognition.start();
+talkBtn.addEventListener("click", () => recognition.start());
+endBtn.addEventListener("click", () => recognition.end());
