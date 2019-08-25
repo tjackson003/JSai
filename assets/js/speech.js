@@ -28,5 +28,13 @@ recognition.addEventListener("result", (e) => {
 
 // recognition.addEventListener("end", recognition.start);
 
-talkBtn.addEventListener("click", () => recognition.start());
-endBtn.addEventListener("click", () => recognition.end());
+talkBtn.addEventListener("click", () => {
+    endBtn.disabled = false;
+    talkBtn. disabled = true;
+    recognition.start();
+});
+endBtn.addEventListener("click", () => {
+    endBtn.disabled = true;
+    talkBtn.disabled = false;
+    recognition.stop();
+});
